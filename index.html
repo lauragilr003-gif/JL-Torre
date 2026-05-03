@@ -2,41 +2,29 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Archivo JL Torres</title>
+    <title>Radio Interactiva</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="radio-compacta">
-        <!-- VISOR DE SINTONÍA -->
-        <div class="seccion-visor">
-            <div class="caja-numero">
-                <span id="mhz">88.0</span>
-                <small>MHz</small>
-            </div>
-            <div class="label-modelo">JLT-2026 / POST-PRO</div>
+    <div class="interfaz">
+        <div id="btn-power" class="switch-antiguo">
+            <div class="placa-metal"><div class="palanca"></div></div>
+            <span class="label">OFF</span>
         </div>
 
-        <!-- DIAL ANALÓGICO (AGUJA) -->
-        <div class="seccion-dial">
-            <img src="https://i.postimg.cc/yxZP1pcN/istockphoto-638856258-612x612.jpg" class="img-fondo">
+        <div class="radio-contenedor">
+            <img src="https://i.postimg.cc/yxZP1pcN/istockphoto-638856258-612x612.jpg" style="width:100%">
             <div id="aguja-roja"></div>
         </div>
 
-        <!-- CONTROLES -->
-        <div class="seccion-inferior">
-            <div id="btn-power" class="boton-power">
-                <div class="led"></div>
-                <span>POWER</span>
-            </div>
-
-            <div class="control-vertical">
-                <input type="range" min="0" max="100" value="0" id="perilla" class="slider-pista">
-                <div class="label-pista">DIAL</div>
-            </div>
+        <div class="controles">
+            <!-- Si esto no se mueve, es porque el JS no cargó bien -->
+            <input type="range" min="0" max="100" value="0" id="perilla">
+            <div class="frecuencia"><span id="mhz">88.0</span> MHz</div>
         </div>
     </div>
 
-    <!-- RECUERDA: Renombra tus archivos en GitHub a estos nombres exactos -->
+    <!-- REVISIÓN: Los nombres aquí deben ser IDÉNTICOS a tus archivos subidos -->
     <audio id="snd-estatica" loop src="estatica.mp3"></audio>
     <audio id="snd-cambio" src="sintonia.mp3"></audio>
     <audio id="snd-final" src="audio-final.mp3"></audio>
