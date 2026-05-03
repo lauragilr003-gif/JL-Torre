@@ -1,33 +1,43 @@
-body { background: #121212; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: 'Courier New', monospace; }
-
-.mueble-radio {
-    background: #4e342e;
-    padding: 30px;
-    border-radius: 10px;
-    border: 8px solid #2e1b15;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-    width: 450px;
+body { 
+    background: #0f0f0f; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    margin: 0; 
+    font-family: 'Courier New', monospace; 
 }
 
-.panel-frontal { background: #1a1a1a; padding: 20px; border-radius: 5px; }
+.radio-compacta {
+    background: #2b1d15;
+    padding: 20px;
+    border-radius: 8px;
+    border: 4px solid #1a1a1a;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+    width: 380px;
+}
 
-.seccion-display {
+.seccion-visor {
     background: #000;
-    padding: 10px;
+    padding: 15px;
     border: 2px solid #444;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
-.visor-digital {
-    font-size: 3.5rem;
-    color: #ff6600;
-    width: 180px; /* Ancho fijo para evitar bugs de movimiento */
+.caja-numero {
+    width: 200px;
     margin: 0 auto;
+    font-size: 3rem;
+    color: #ff5500;
+    text-shadow: 0 0 10px #ff3300;
 }
 
-.seccion-dial { position: relative; margin-bottom: 25px; }
-.img-dial { width: 100%; opacity: 0.8; }
+.caja-numero small { font-size: 1rem; color: #444; }
+.label-modelo { font-size: 0.6rem; color: #555; margin-top: 5px; }
+
+.seccion-dial { position: relative; border: 1px solid #000; }
+.img-fondo { width: 100%; display: block; filter: sepia(0.6) contrast(1.1); }
 
 #aguja-roja {
     position: absolute;
@@ -36,22 +46,27 @@ body { background: #121212; display: flex; justify-content: center; align-items:
     width: 3px;
     height: 14%;
     background: #ff0000;
-    box-shadow: 0 0 10px #f00;
+    box-shadow: 0 0 8px #f00;
 }
 
-.seccion-controles { display: flex; justify-content: space-around; align-items: center; }
+.seccion-inferior {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
 
-/* PALANCA DE PODER */
-.toggle-switch { cursor: pointer; text-align: center; }
-.base-metal { width: 40px; height: 60px; background: #333; display: flex; justify-content: center; align-items: center; margin-bottom: 5px; border-radius: 4px; }
-.palanca-fisica { width: 10px; height: 30px; background: #777; border-radius: 5px; transition: 0.2s; }
-.on .palanca-fisica { transform: translateY(-10px); background: #ff0000; box-shadow: 0 0 10px #f00; }
+/* BOTÓN POWER */
+.boton-power { cursor: pointer; text-align: center; color: #555; }
+.led { width: 12px; height: 12px; background: #222; border-radius: 50%; margin: 0 auto 5px; border: 1px solid #000; }
+.on .led { background: #00ff00; box-shadow: 0 0 10px #0f0; }
+.on { color: #fff; }
 
-/* FADER VERTICAL */
-.fader-vertical { height: 150px; display: flex; align-items: center; }
-#perilla {
-    writing-mode: bt-lr; /* Soporte para navegadores antiguos */
+/* SLIDER VERTICAL */
+.slider-pista {
     appearance: slider-vertical;
-    width: 20px;
-    height: 100%;
+    width: 25px;
+    height: 100px;
+    cursor: pointer;
 }
+.label-pista { font-size: 0.7rem; color: #666; margin-top: 5px; }
