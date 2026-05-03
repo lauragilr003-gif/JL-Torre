@@ -1,28 +1,76 @@
-body { background: #000; display: flex; justify-content: center; align-items: center; min-height: 100vh; color: #fff; font-family: 'Courier New', monospace; margin: 0; }
-.interfaz { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 900px; padding: 20px; }
-
-/* ESTILO OXIDADO */
-.switch-antiguo { margin-bottom: 20px; cursor: pointer; text-align: center; }
-.placa-metal { width: 60px; height: 80px; background: #3e2723; border: 2px solid #1a1110; border-radius: 4px; position: relative; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px #000; }
-.palanca { width: 12px; height: 35px; background: #777; border-radius: 6px; transition: 0.3s; }
-.switch-antiguo.on .palanca { transform: translateY(-15px); background: #ff3333; box-shadow: 0 0 15px #ff0000; }
-.tornillo { width: 5px; height: 5px; background: #111; border-radius: 50%; position: absolute; }
-.tr { top: 5px; right: 5px; } .tl { top: 5px; left: 5px; }
-
-/* LA RADIO Y LA AGUJA */
-.radio-contenedor { position: relative; width: 100%; }
-.fondo-radio { width: 100%; height: auto; display: block; }
-#aguja-roja { 
-    position: absolute; 
-    top: 19.5%; /* Tu medida exacta */
-    left: 45.4%; 
-    width: 3px; 
-    height: 14%; /* Tu medida exacta */
-    background: #ff0000; 
-    box-shadow: 0 0 10px #f00; 
-    z-index: 10; 
+body { 
+    background: #0a0a0a; 
+    color: #00ff41; 
+    font-family: 'Courier New', monospace; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    margin: 0; 
 }
 
-.dial-control { width: 100%; background: #111; padding: 30px; text-align: center; border-radius: 0 0 10px 10px; }
-#perilla { width: 80%; cursor: pointer; }
-.frecuencia { margin-top: 15px; font-size: 30px; color: #0f0; background: #010; padding: 10px; display: inline-block; border-radius: 5px; }
+.radio-digital {
+    background: #1a1a1a;
+    padding: 30px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.pantalla {
+    background: #000;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #00ff41;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.frecuencia { font-size: 3rem; font-weight: bold; }
+.label-caso { font-size: 0.8rem; letter-spacing: 2px; margin-top: 5px; color: #008f11; }
+
+.dial-visual {
+    height: 20px;
+    background: #111;
+    margin-top: 15px;
+    position: relative;
+    border-radius: 3px;
+    overflow: hidden; /* Esto evita que la aguja se salga */
+}
+
+#aguja-roja {
+    position: absolute;
+    top: 0;
+    left: 0%; /* Empezamos en 0 */
+    width: 4px;
+    height: 100%;
+    background: #ff0000;
+    box-shadow: 0 0 8px #ff0000;
+    transition: left 0.1s ease-out;
+}
+
+.controles { display: flex; align-items: center; gap: 20px; }
+
+.boton-power {
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 5px;
+}
+
+.led { width: 10px; height: 10px; background: #300; border-radius: 50%; margin: 0 auto 5px; }
+.on .led { background: #f00; box-shadow: 0 0 10px #f00; }
+
+.slider-container { flex-grow: 1; }
+#perilla { width: 100%; cursor: pointer; }
+
+.rango-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    color: #666;
+    margin-top: 5px;
+}
