@@ -3,36 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Radio Archivo</title>
+    <title>Expediente JL Torres</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="interfaz">
-        <!-- INTERRUPTOR DE PODER -->
-        <div id="btn-power" class="switch-antiguo">
-            <div class="placa-metal">
-                <div class="tornillo tr"></div>
-                <div class="tornillo tl"></div>
-                <div class="palanca"></div>
-            </div>
-            <span class="label">OFF</span>
-        </div>
-
-        <!-- DIAL DE LA RADIO -->
-        <div class="radio-contenedor">
-            <img src="https://i.postimg.cc/yxZP1pcN/istockphoto-638856258-612x612.jpg" class="fondo-radio" alt="Radio Antigua">
-            <div id="aguja-roja"></div>
-        </div>
-
-        <!-- CONTROLES INFERIORES -->
-        <div class="dial-control">
-            <input type="range" min="0" max="100" value="0" id="perilla">
+    <div class="radio-digital">
+        <div class="pantalla">
             <div class="frecuencia"><span id="mhz">88.0</span> MHz</div>
+            <div class="label-caso">CASO: JL TORRES</div>
+            <div class="dial-visual">
+                <!-- La aguja ahora vive dentro de este contenedor -->
+                <div id="aguja-roja"></div>
+            </div>
+        </div>
+
+        <div class="controles">
+            <div id="btn-power" class="boton-power">
+                <div class="led"></div>
+                <span>POWER</span>
+            </div>
+            
+            <div class="slider-container">
+                <input type="range" min="0" max="100" value="0" id="perilla">
+                <div class="rango-labels">
+                    <span>88.0</span>
+                    <span>99.8</span>
+                    <span>108.0</span>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- CONFIGURACIÓN DE AUDIOS (Nombres exactos de tus archivos) -->
+    <!-- AUDIOS: Asegúrate que el nombre en GitHub sea exacto -->
     <audio id="snd-cambio" src="sintonía.mp3"></audio>
     <audio id="snd-final" src="audio-final.mp3"></audio>
 
