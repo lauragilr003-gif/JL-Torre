@@ -2,54 +2,40 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Expediente JL Torres - Archivo de Audio</title>
+    <title>Archivo JL Torres</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <div class="mueble-radio">
         <div class="panel-frontal">
-            
-            <!-- DISPLAY DE FRECUENCIA -->
             <div class="seccion-display">
-                <div class="visor-digital">
-                    <span id="mhz">88.0</span>
-                </div>
-                <div class="marca-radio">MODELO JLT-1926</div>
+                <div class="visor-digital"><span id="mhz">88.0</span></div>
             </div>
-
-            <!-- DIAL VISUAL (CON AGUJA) -->
+            
             <div class="seccion-dial">
                 <img src="https://i.postimg.cc/yxZP1pcN/istockphoto-638856258-612x612.jpg" class="img-dial">
                 <div id="aguja-roja"></div>
             </div>
 
-            <!-- CONTROLES INFERIORES -->
             <div class="seccion-controles">
-                
-                <!-- PALANCA DE PODER -->
                 <div id="btn-power" class="toggle-switch">
-                    <div class="base-metal">
-                        <div class="palanca-fisica"></div>
-                    </div>
+                    <div class="base-metal"><div class="palanca-fisica"></div></div>
                     <span class="estado-texto">OFF</span>
                 </div>
-
-                <!-- SLIDER VERTICAL (SINTONIZADOR) -->
+                
                 <div class="control-sintonia">
-                    <div class="fader-track">
-                        <input type="range" min="0" max="100" value="0" id="perilla" orient="vertical">
+                    <div class="fader-vertical">
+                        <input type="range" min="0" max="100" value="0" id="perilla">
                     </div>
                     <div class="label-fader">SINTONÍA</div>
                 </div>
-
             </div>
         </div>
     </div>
 
-    <!-- AUDIOS -->
+    <!-- NOTA: Renombra tus archivos en GitHub para que no tengan tildes -->
     <audio id="snd-estatica" loop src="estatica.mp3"></audio>
-    <audio id="snd-cambio" src="sintonía.mp3"></audio>
+    <audio id="snd-cambio" src="sintonia.mp3"></audio>
     <audio id="snd-final" src="audio-final.mp3"></audio>
 
     <script src="script.js"></script>
