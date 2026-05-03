@@ -2,31 +2,38 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Radio Interactiva</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Interactiva - Proyecto Cine</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <div class="interfaz">
+        <!-- INTERRUPTOR DE PODER -->
         <div id="btn-power" class="switch-antiguo">
-            <div class="placa-metal"><div class="palanca"></div></div>
+            <div class="placa-metal">
+                <div class="tornillo tr"></div>
+                <div class="tornillo tl"></div>
+                <div class="palanca"></div>
+            </div>
             <span class="label">OFF</span>
         </div>
 
+        <!-- DIAL DE LA RADIO -->
         <div class="radio-contenedor">
-            <img src="https://i.postimg.cc/yxZP1pcN/istockphoto-638856258-612x612.jpg" style="width:100%">
+            <img src="https://i.postimg.cc/yxZP1pcN/istockphoto-638856258-612x612.jpg" class="fondo-radio" alt="Radio Antigua">
             <div id="aguja-roja"></div>
         </div>
 
-        <div class="controles">
-            <!-- Si esto no se mueve, es porque el JS no cargó bien -->
+        <!-- CONTROLES INFERIORES -->
+        <div class="dial-control">
             <input type="range" min="0" max="100" value="0" id="perilla">
             <div class="frecuencia"><span id="mhz">88.0</span> MHz</div>
         </div>
     </div>
 
-    <!-- REVISIÓN: Los nombres aquí deben ser IDÉNTICOS a tus archivos subidos -->
-    <audio id="snd-estatica" loop src="estatica.mp3"></audio>
-    <audio id="snd-cambio" src="sintonia.mp3"></audio>
+    <!-- CONFIGURACIÓN DE AUDIOS (Nombres exactos de tus archivos) -->
+    <audio id="snd-cambio" src="sintonía.mp3"></audio>
     <audio id="snd-final" src="audio-final.mp3"></audio>
 
     <script src="script.js"></script>
