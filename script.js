@@ -1,65 +1,44 @@
-const powerBtn = document.getElementById('radio-power');
-const control = document.getElementById('control-fisico');
+const power = document.getElementById('btn-power');
+const perilla = document.getElementById('perilla');
 const aguja = document.getElementById('aguja-roja');
-const freqText = document.getElementById('valor-freq');
+const mhzDisp = document.getElementById('mhz');
 
-const estatica = document.getElementById('estatica-fondo');
-const sonidoCambio = document.getElementById('sonido-cambio');
-const audioFinal = document.getElementById('audio-final');
+const audioEstatica = document.getElementById('snd-estatica');
+const audioCambio = document.getElementById('snd-cambio');
+const audioFinal = document.getElementById('snd-final');
 
 let encendido = false;
-const frecuenciaMeta = 99.8;
 
-// FUNCIÓN MAESTRA DE AUDIO
-function activarAudio(audio, play = true) {
-  if (!audio) return;
-  if (play) {
-    audio.play().catch(() => console.log("Esperando interacción..."));
-  } else {
-    audio.pause();
-  }
-}
-
-// CLICK EN EL INTERRUPTOR
-powerBtn.addEventListener('click', () => {
-  encendido = !encendido;
-  powerBtn.classList.toggle('on');
-  document.querySelector('.estado-txt').innerText = encendido ? "ON" : "OFF";
-
-  if (encendido) {
-    activarAudio(estatica); // Arranca la estática inmediatamente
-  } else {
-    activarAudio(estatica, false);
-    activarAudio(sonidoCambio, false);
-    if(audioFinal) activarAudio(audioFinal, false);
-  }
+power.addEventListener('click', () => {
+    encendido = !encendido;
+    power.classList.toggle('on');
+    document.querySelector('.label').innerText = encendido ? "ON" : "OFF";
+    
+    if (encendido) {
+        audioEstatica.play().catch(() => console.log("Haz clic para activar audio"));
+    } else {
+        [audioEstatica, audioCambio, audioFinal].forEach(a => { a.pause(); a.currentTime = 0; });
+    }
 });
 
-control.addEventListener('input', () => {
-  if (!encendido) return;
+perilla.addEventListener('input', () => {
+    if (!encendido) return;
+    let val = perilla.value;
+    let mhz = (88.0 + (val * 0.2)).toFixed(1);
+    mhzDisp.innerText = mhz;
+    
+    // Mueve la aguja por el dial
+    aguja.style.left = (45.4 + (val * 0.33)) + "%";
 
-  let val = control.value;
-  let mhz = (88.0 + (val * 0.2)).toFixed(1);
-  freqText.innerText = mhz;
+    if (audioCambio.paused) audioCambio.play();
 
-  // Mover aguja
-  let pos = 45.4 + (val * (78.4 - 45.4) / 100);
-  aguja.style.left = pos + "%";
-
-  // Sonido de cambio de dial
-  if (sonidoCambio.paused) activarAudio(sonidoCambio);
-
-  // Lógica de sintonía
-  if (parseFloat(mhz) === frecuenciaMeta) {
-    activarAudio(estatica, false);
-    activarAudio(sonidoCambio, false);
-    if (audioFinal) activarAudio(audioFinal);
-  } else {
-    if (audioFinal) { audioFinal.pause(); audioFinal.currentTime = 0; }
-    if (estatica.paused) activarAudio(estatica);
-  }
-});
-
-control.addEventListener('change', () => {
-  if (sonidoCambio) { sonidoCambio.pause(); sonidoCambio.currentTime = 0; }
+    // Sintonía exacta para tu examen de mayo
+    if (parseFloat(mhz) === 99.8) {
+        audioEstatica.pause();
+        audioCambio.pause();
+        audioFinal.play();
+    } else {
+        if (!audioFinal.paused) { audioFinal.pause(); audioFinal.currentTime = 0; }
+        if (audioEstatica.paused) audioEstatica.play();
+    }
 });
