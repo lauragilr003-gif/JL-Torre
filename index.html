@@ -2,32 +2,37 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Radio Interactiva</title>
+    <title>Expediente JL Torres</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="interfaz">
         <div id="btn-power" class="switch-antiguo">
-            <div class="placa-metal"><div class="palanca"></div></div>
+            <div class="placa-metal">
+                <div class="tornillo tr"></div><div class="tornillo tl"></div>
+                <div class="palanca"></div>
+            </div>
             <span class="label">OFF</span>
         </div>
 
         <div class="radio-contenedor">
-            <img src="https://i.postimg.cc/yxZP1pcN/istockphoto-638856258-612x612.jpg" style="width:100%">
+            <img src="https://i.postimg.cc/yxZP1pcN/istockphoto-638856258-612x612.jpg" class="fondo-radio">
             <div id="aguja-roja"></div>
+            
+            <div class="fader-vertical">
+                <input type="range" min="0" max="100" value="0" id="perilla" orient="vertical">
+            </div>
         </div>
 
-        <div class="controles">
-            <!-- Si esto no se mueve, es porque el JS no cargó bien -->
-            <input type="range" min="0" max="100" value="0" id="perilla">
+        <div class="display-box">
             <div class="frecuencia"><span id="mhz">88.0</span> MHz</div>
+            <div class="status">SINTONIZANDO REGISTRO...</div>
         </div>
     </div>
 
-    <!-- REVISIÓN: Los nombres aquí deben ser IDÉNTICOS a tus archivos subidos -->
     <audio id="snd-estatica" loop src="estatica.mp3"></audio>
     <audio id="snd-cambio" src="sintonia.mp3"></audio>
-    <audio id="snd-final" src="audio-final.mp3"></audio>
+    <audio id="snd-final" src="radio jltorres.ogg"></audio>
 
     <script src="script.js"></script>
 </body>
