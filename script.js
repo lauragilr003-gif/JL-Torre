@@ -9,19 +9,23 @@ const audioFinal = document.getElementById('snd-final');
 
 let encendido = false;
 
-// Mezcla de audio
-audioEstatica.volume = 0.1; 
-audioCambio.volume = 0.9;
-audioFinal.volume = 1.0;
+// Configuración de niveles de volumen
+audioEstatica.volume = 0.15; // Estática suave de fondo
+audioCambio.volume = 0.8;   // Sonido de cambio fuerte
+audioFinal.volume = 1.0;    // Audio del caso al máximo
 
 power.addEventListener('click', () => {
     encendido = !encendido;
     power.classList.toggle('on');
+    document.querySelector('.label').innerText = encendido ? "ON" : "OFF";
     
     if (encendido) {
-        audioEstatica.play().catch(e => console.log("Carga audios en GitHub"));
+        audioEstatica.play().catch(e => console.log("Error al cargar audios"));
     } else {
-        [audioEstatica, audioCambio, audioFinal].forEach(a => { a.pause(); a.currentTime = 0; });
+        [audioEstatica, audioCambio, audioFinal].forEach(a => { 
+            a.pause(); 
+            a.currentTime = 0; 
+        });
     }
 });
 
@@ -32,18 +36,19 @@ perilla.addEventListener('input', () => {
     let mhz = (88.0 + (val * 0.2)).toFixed(1);
     mhzDisp.innerText = mhz;
     
-    // Mover aguja
+    // Movimiento de la aguja en el dial horizontal
     aguja.style.left = (45.4 + (val * 0.33)) + "%";
 
-    // Sonido sintonía dominante
+    // Efecto de sintonía sonora
     audioCambio.currentTime = 0;
     audioCambio.play();
 
-    // Sintonía exacta para el Caso JL Torres
+    // Sintonía del Caso JL Torres (99.8 MHz)
     if (parseFloat(mhz) === 99.8) {
         audioEstatica.pause();
-        audioFinal.play();
+        if (audioFinal.paused) audioFinal.play();
     } else {
+        // Si sale de la frecuencia, detiene la grabación y vuelve la estática
         if (!audioFinal.paused) { 
             audioFinal.pause(); 
             audioFinal.currentTime = 0; 
