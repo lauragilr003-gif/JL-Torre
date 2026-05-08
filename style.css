@@ -1,28 +1,68 @@
-body { background: #000; display: flex; justify-content: center; align-items: center; min-height: 100vh; color: #fff; font-family: 'Courier New', monospace; margin: 0; }
-.interfaz { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 900px; padding: 20px; }
+body { 
+    background: #000; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh; 
+    color: #fff; 
+    font-family: 'Courier New', monospace; 
+    margin: 0; 
+}
 
-/* ESTILO OXIDADO */
+.interfaz { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    width: 100%; 
+    max-width: 800px; 
+    padding: 20px; 
+}
+
+/* SWITCH */
 .switch-antiguo { margin-bottom: 20px; cursor: pointer; text-align: center; }
-.placa-metal { width: 60px; height: 80px; background: #3e2723; border: 2px solid #1a1110; border-radius: 4px; position: relative; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px #000; }
+.placa-metal { width: 60px; height: 80px; background: #3e2723; border: 2px solid #1a1110; border-radius: 4px; position: relative; display: flex; justify-content: center; align-items: center; }
 .palanca { width: 12px; height: 35px; background: #777; border-radius: 6px; transition: 0.3s; }
-.switch-antiguo.on .palanca { transform: translateY(-15px); background: #ff3333; box-shadow: 0 0 15px #ff0000; }
-.tornillo { width: 5px; height: 5px; background: #111; border-radius: 50%; position: absolute; }
-.tr { top: 5px; right: 5px; } .tl { top: 5px; left: 5px; }
+.on .palanca { transform: translateY(-15px); background: #ff3333; box-shadow: 0 0 15px #ff0000; }
 
-/* LA RADIO Y LA AGUJA */
-.radio-contenedor { position: relative; width: 100%; }
-.fondo-radio { width: 100%; height: auto; display: block; }
+/* RADIO */
+.radio-contenedor { position: relative; width: 100%; border: 4px solid #222; }
+.fondo-radio { width: 100%; display: block; filter: sepia(0.3) contrast(1.1); }
+
 #aguja-roja { 
     position: absolute; 
-    top: 19.5%; /* Tu medida exacta */
+    top: 19.5%; 
     left: 45.4%; 
-    width: 3px; 
-    height: 14%; /* Tu medida exacta */
+    width: 4px; 
+    height: 14%; 
     background: #ff0000; 
     box-shadow: 0 0 10px #f00; 
     z-index: 10; 
 }
 
-.dial-control { width: 100%; background: #111; padding: 30px; text-align: center; border-radius: 0 0 10px 10px; }
-#perilla { width: 80%; cursor: pointer; }
-.frecuencia { margin-top: 15px; font-size: 30px; color: #0f0; background: #010; padding: 10px; display: inline-block; border-radius: 5px; }
+/* CONTROL VERTICAL */
+.fader-vertical {
+    position: absolute;
+    right: -60px;
+    top: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+#perilla {
+    appearance: slider-vertical;
+    width: 30px;
+    height: 250px;
+    cursor: pointer;
+}
+
+/* VISOR */
+.display-box { 
+    margin-top: 25px; 
+    background: #010; 
+    border: 2px solid #0f0; 
+    padding: 10px; 
+    width: 300px; 
+    text-align: center; 
+}
+.frecuencia { font-size: 45px; color: #0f0; font-weight: bold; }
+.status { font-size: 10px; color: #050; letter-spacing: 2px; }
